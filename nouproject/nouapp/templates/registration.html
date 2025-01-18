@@ -1,0 +1,104 @@
+{% extends "parent.html" %}
+{% block body %}
+<h1 style="text-align: center;color: blueviolet;">Student Registration Form</h1>
+{% if messages %}
+   {% for message in messages %}
+     <div class="alert alert-success-dimissible d=fade show" role="alert">
+      {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+     </div>
+   {% endfor %}
+{% endif %}
+<form class="form-group" method="post" action="{% url 'nouapp:registration' %}">
+  {% csrf_token %}
+   <table class="table" style="width: 80%;margin: auto;">
+      <tr>
+        <td>Enter Roll No.</td>
+        <td><input type="number" name="rollno" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Name</td>
+        <td><input type="text" name="name" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Father Name</td>
+        <td><input type="text" name="fname" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Mother Name</td>
+        <td><input type="text" name="mname" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Select Gender</td>
+        <td>
+          <input type="radio" value="male" name="gender" class="form-check-input"/>Male
+          <input type="radio" value="female"  name="gender" class="form-check-input"/>Female
+      </td>
+      </tr>
+      <tr>
+        <td>Enter Date of Birth</td>
+        <td><input type="date" name="dob" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Address</td>
+        <td><textarea name="address" class="form-control"></textarea></td>
+      </tr>
+      <tr>
+        <td>Program</td>
+        <td><select name="program" class="form-control">
+            <option selected>---------------select program------------------</option>
+            <option value="M.Tech">M.Tech</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="Diploma">Diploma</option>
+                    
+        </select></td>
+      </tr>
+      <tr>
+        <td>Branch</td>
+        <td><select name="branch" class="form-control">
+            <option selected>---------------select branch------------------</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>        
+        </select></td>
+      </tr>
+      <tr>
+        <td>Year</td>
+        <td>
+            <select name="year" class="form-control">
+               <option selected>---------------select year------------------</option>
+               <option value="First Year">First Year</option>
+               <option value="Second Year">Second Year</option>
+               <option value="Third YEar">Third Year</option>
+               <option value="Final Year">Final Year</option>          
+            </select>
+         </td>
+      </tr>
+      <tr>
+        <td>Contact No.</td>
+        <td><input type="number" name="contactno" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input type="text" name="emailaddress" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Password</td>
+        <td><input type="password" name="password" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Confirm Password</td>
+        <td><input type="password" name="confirmpassword" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td>Enter Captcha Code</td>
+        <td>{{form.captcha}}</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><button class="btn btn-success" type="submit">Register</button></td>
+      </tr>
+    </table>
+
+</form>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "parent.html" %}
+{% block body %}
+<script>
+    function validate()
+    {
+        var userid=document.getElementById("userid");
+        var password=document.getElementById("password");
+        if (userid.value=="" || userid==null)
+        {
+            alert('Please enter userid');
+            userid.focus();
+        }
+        else if(password.value=="" || password.value==null) 
+        {
+            alert('Please enter password');
+            password.focus();
+        }
+        else
+        {
+            document.getElementById("frmlogin").submit();
+        }
+    }
+</script>
+<h1 style="text-align: center;color: blueviolet;">Login Form</h1>
+{% if messages %}
+      {% for message in messages %}
+           <P style="text-align: center;color: green">{{message}}</P>
+       {% endfor %}
+{% endif %}
+<form class="form-group" method="post" action="{% url 'nouapp:login' %}" id="frmlogin" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <table class="table" style="width: 80%;margin: auto;">
+        <tr>
+            <td>Enter User Id </td>
+            <td><input type="text" name="userid" class="form-control" id="userid"/></td>
+        </tr>
+        <tr>
+            <td>Enter Password</td>
+            <td><input type="password" name="password" class="form-control" id="password"/></td>
+        </tr>
+        <tr>
+            <td>Select User Type</td>
+            <td>
+                <select name="usertype" class="form-control">
+                    <option selected>----------select user type-------------</option>
+                    <option value="student">Student</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><button type="submit" class=" btn btn-success">Login</button></td>
+           
+                </tr>
+    </table>
+</form>
+
+{% endblock %}

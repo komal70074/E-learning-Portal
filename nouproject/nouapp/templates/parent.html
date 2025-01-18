@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOU E-Gyan Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script scr="{% static 'js/script.js'%}" rel="javascript" type="text/javascript"></script>
+  <link href="{% static 'images/logo.jpeg' %}" rel="icon"/>
+</head>
+
+<body>
+  <div class=" container container-fluid">
+    <div class="row p-3" style="background-color: brown;">
+      <div class="col-sm-6" style="color: white;">
+        <i class=" fa-spin fa fa-phone" style="margin-left: 10%;color: white ;font-size: 20px;border: transparent;"></i>
+        +91 7080102007 &nbsp;&nbsp;
+        <i class="fa fa-envelope" style="color: white;font-size: 15px;border: transparent;"></i>
+       <p style="margin-left: 43%;margin-top: -5%;"> nouegyanhelp@gmail.com</p>
+      </div> 
+      <div class="col-sm-6">
+        <h6> <span id="time" style="color: white;margin-left: 10%;"> </span></h6>
+        <script src="{% static 'js/script.js' %}"> </script>
+      </div>
+    </div>
+    <div class="row p-3" style="background-color: brown;color: white;border: 2px dashed orange;">
+    <h6 style="margin-left: 2%;">For Admission and Examination related query, Kindly call on University helpline
+       Numbers 9341508580,9341508577,0612-2201013 & 0612-2206916</h6>
+    </div>
+    <div class="row p-2">
+      <div class="col-sm-6">
+        <h3 style="color: brown;margin-left: 25%;">NOU e-Gyan PORTAL</h3>
+        <h6 style="margin-left: 25%;">(A Concept by Nalanda Open University)</h6>
+      </div>
+      <div class="col-sm-6">
+        <a href="#"><i class="fa fa-twitter" style="font-size: 40px; margin-left: 35%;margin-top: 2%;"></i></a>
+        <a href="#"><i class="fa fa-facebook" style="font-size: 40px;margin-left: 3%;color: darkblue;"></i></a>
+        <a href="#"><i class="fa fa-instagram" style="font-size: 40px;margin-left: 3%;color: palevioletred;"></i></a>
+       <a href="#"><i class="fa fa-linkedin" style="font-size: 40px;margin-left: 3%;"></i></a>
+       <a href="#"><i class="fa fa-youtube" style="font-size: 40px;margin-left: 3%;color: red;"></i></a>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mt-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/logo.jpeg' %}" width="30px" height="30px" class="d-inline-block align-text-top" />
+          Nalanda Open University |
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'nouapp:index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'nouapp:aboutus' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'nouapp:registration' %}">Registration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'nouapp:login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'nouapp:contactus' %}">Contact Us</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+<marquee direction="right" onmouseover="stop()" onmouseout="start()">
+<div class="row bg-danger text-light mt-3" style="border: 1px solid red;">
+   <ul style="list-style-type: none;margin-top: 5px;">
+  {% for n in nw %}
+   <li style="display: inline;padding: 20px;">{{n.newstext}}</li>
+  {% endfor %}
+ </ul>
+ </div>
+</marquee>
+
+    <!--------------------------------------------slider------------------------------------------------------>
+
+    <div id="carouselExample" class="carousel slide mt-2">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/s1.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/s2.jpg'%}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{%  static 'images/s3.jpg'%}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!----------------------------------------------row---------------------------------------------------------->
+    <div class="row mt-2">
+      <div class="col-sm-4" style="background-color: aquamarine;min-height: 600px;">
+      </div>
+      <div class="col-sm-8" style="background-color: whitesmoke;min-height: 600px;">
+        {% block body %}
+
+        {% endblock %}
+      </div>
+    </div>
+    <!---------------------------------------------footer------------------------------------------------------------>
+    <div class="row mt-2" style="min-height: 250px;">
+      <div class="col-sm-4" style="background-color: black;">
+        <div class="z" style="border: 1px solid orange;height: 90%;width: 95%;margin-top: 13px;margin-left: 10px;">
+        </div>
+      </div>
+      <div class="col-sm-4" style="background-color: black;">
+        <div class="z" style="border: 1px solid orange;height: 90%;width: 95%;margin-top: 13px;margin-left: 5px;"></div>
+      </div>
+      <div class="col-sm-4" style="background-color: black;">
+        <div class="z" style="border: 1px solid orange;height: 90%;width: 95%;margin-top: 13px;margin-left: 10px;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

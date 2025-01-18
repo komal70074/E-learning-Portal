@@ -1,0 +1,47 @@
+{% extends "studentparent.html" %}
+{% block body %}
+{% if messages %}
+   {% for message in messages %}
+   <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+      {{message}}
+      <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
+                 
+                <span aria-hidden="true" style="font-size: 20px;color: brown">×</span>
+            </button>
+            </div>
+   {% endfor %}
+{% endif %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Response Form</h1>  
+             
+             <form method="post" class="form-group mt-5" action="{% url 'studentapp:response' %}">
+                  <table class="table table-bordered text-light " style="width: 60%;">
+                    {% csrf_token %}
+                    <tr>
+                        <td>Select Response Type</td>
+                        <td>
+                            <select name="responsetype" class="form-control text-light">
+                                <option selected>----Select Response Type-----</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="complain">Complain</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>Enter Subject</td>
+                    <td><input type="text" name="subject" class="form-control text-light"/></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Response Text</td>
+                        <td><textarea name="responsetext" class="form-control text-light"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                        </tr>
+                  </table>
+             </form> 
+        </div>
+    </div>
+{% endblock body %}

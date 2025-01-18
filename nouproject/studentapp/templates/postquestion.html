@@ -1,0 +1,63 @@
+{% extends "studentparent.html" %}
+{% block body %}
+{% if messages %}
+   {% for message in messages %}
+   <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+      {{message}}
+      <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
+                 
+                <span aria-hidden="true" style="font-size: 20px;color: brown">×</span>
+            </button>
+            </div>
+   {% endfor %}
+{% endif %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Discussion Forum</h1>   
+              <form class="form-group" method="post" action="{% url 'studentapp:postquestion'%}">
+              {% csrf_token %}
+              <table class="table table-bordered text-light" style="margin:auto;width: 60%;">
+            <tr>
+                <td>Enter Question</td>
+                <td><textarea name="question" class="form-control text-light" required></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <button type="submit" class="btn btn-warning"> Post Question</button>
+                </td>
+            </tr>
+            </table>
+</form>
+<br/>
+<table class="table table-bordered text-light">
+    <tr>
+        <th>Q#</th>
+        <th>Question</th>
+        <th>Posted By</th>
+        <th>Posted Date</th>
+        <th>Post Answer</th>
+        <th>View Answer</th>
+        
+    </tr>
+    {% for q in ques %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{q.question}}</td>
+        <td>{{q.postedby}}</td>
+        <td>{{q.posteddate}}</td>
+        <td>
+            <a href="{% url 'studentapp:postanswer' qid=q.qid %}">
+                <button type="button" class="btn btn-success">Post Answer</button> </a>
+        </td>
+        <td>
+            <a href="{% url 'studentapp:viewanswer' qid=q.qid %}">
+                <button type="button" class="btn btn-success">View Answer</button>
+            </a>
+        </td>
+     
+    </tr>
+     {% endfor %}
+</table>
+        </div>
+    </div>
+{% endblock body %}

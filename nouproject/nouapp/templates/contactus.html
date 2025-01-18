@@ -1,0 +1,88 @@
+{% extends "parent.html" %}
+{% block body %}
+<script>
+    function validate()
+    {
+        var name=document.getElementById("name");
+        var contactno=document.getElementById("contactno");
+        var emailaddress=document.getElementById("emailaddress");
+        var emailexp=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(name.value=="" || name.value==null)
+        {
+            alert('Please enter name');
+            name.focus();
+        }
+        else if(contactno.value=="" || contactno.value==null)
+        {
+            alert('Please enter contactno');
+            contactno.focus(); 
+        }
+        else if(contactno.value.length!=10)
+        {
+            alert('Please enter 10 digits');
+            contactno.focus();
+        }
+        else if(emailaddress.value=="" || emailaddress.value==null)
+        {
+            alert('Please enter emailaddress');
+            emailaddress.focus();
+        }
+        else if(!emailexp.test(emailaddress.value))
+        {
+            alert('Please enter valid email');
+            emailaddress.focus();
+        }
+        else
+        {
+            document.getElementById("frmenquiry").submit();
+        }
+    }
+</script>
+<h1 style="text-align: center;color: blueviolet;margin-top: 5%;">Enquiry Form</h1>
+<form  id="frmenquiry" onsubmit="event.preventDefault();validate()" class="form-group" action="{% url 'nouapp:contactus' %}" method="post">
+    {% csrf_token %}
+   <table class="table" style="width: 80%;margin: auto;">
+       <tr>
+        <td>Enter Name</td>
+        <td><input type="text" name="name" class="form-control" placeholder="" id="name"/></td>
+       </tr>
+       <tr>
+        <td>Select Gender</td>
+          <td>
+            <input type="radio" value="male" name="gender" class="form-check-input"/>Male
+            <input type="radio" value="female"  name="gender" class="form-check-input"/>Female
+        </td>
+       </tr>
+<tr>
+  <td>Enter Address</td>
+  <td><textarea name="address" class="form-control"></textarea></td>
+</tr>
+<tr>
+    <td>Enter Contact No.</td>
+    <td><input type="number" name="contactno" class="form-control" id="contactno"/></td>
+</tr>
+<tr>
+    <td>Enter Email Address</td>
+    <td><input type="text" name="emailaddress" class="form-control" id="emailaddress"/></td>
+</tr>
+<tr>
+    <td>Enter Enquiry Text</td>
+    <td><textarea name="enquirytext" class="form-control"></textarea></td>
+</tr>
+<tr>
+    <td>&nbsp;</td>
+   <td>
+    <button type="submit" class="btn btn-primary" class="form-control">Submit</button>
+    <button type="clear" class="btn btn-danger"  class="form-control">Clear</button>
+</td>
+</tr>
+ 
+   </table>
+</form>
+{% if messages %}
+     {% for message in messages %}
+ <h3 style="color: green;text-align: center;">{{message}}</h3>
+      {% endfor %}
+ {% endif %}
+
+{% endblock %}
